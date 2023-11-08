@@ -24,7 +24,7 @@
   <?php  if ($session->isUserLoggedIn(true)): ?>
     <header id="header">
       <div class="logo pull-left">
-        Insurance Mgt System
+        Online Insurance System
       </div>
       <div class="header-content">
       <div class="header-date pull-left">

@@ -42,7 +42,7 @@
           if($db->query($query2)){}
 
           //sucess
-          $session->msg('s',"User account has been creted! ");
+          $session->msg('s',"User account has been created! ");
           redirect('users.php', false);
         } else {
           //failed

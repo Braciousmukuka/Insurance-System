@@ -93,12 +93,15 @@
                             <input type="text" class="form-control" name="premium" placeholder="Enter Premium">
                         </div>
                         <div>
-                        <label for="level">Insurance Period</label>
-                            <select class="form-control" name="duration">
+                        <label for="level">Insurance Period (Years)</label>
+                            <!-- <select class="form-control" name="duration">
                             <?php foreach ($products as $product ):?>
                             <option value="<?php echo $product['quantity'];?>"><?php echo ucwords($product['quantity']);?> Years</option>
                             <?php endforeach;?>
-                            </select>
+                            </select> -->
+
+                            <input type="number" min="1" class="form-control" name="duration" placeholder="10 years">
+
                         </div>
                         <br/>
                         <div class="form-group clearfix">
