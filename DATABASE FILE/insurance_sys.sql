@@ -87,7 +87,7 @@ CREATE TABLE `policy_sale` (
   `id` int(11) NOT NULL,
   `product` varchar(255) NOT NULL,
   `premium` int(11) NOT NULL,
-  `intrest` int(11) NOT NULL,
+  `interest` int(11) NOT NULL,
   `sumassured` int(11) NOT NULL,
   `totalsum` int(11) NOT NULL,
   `client` varchar(255) NOT NULL,
@@ -99,7 +99,7 @@ CREATE TABLE `policy_sale` (
 -- Dumping data for table `policy_sale`
 --
 
-INSERT INTO `policy_sale` (`id`, `product`, `premium`, `intrest`, `sumassured`, `totalsum`, `client`, `insurancePeriod`, `date`) VALUES
+INSERT INTO `policy_sale` (`id`, `product`, `premium`, `interest`, `sumassured`, `totalsum`, `client`, `insurancePeriod`, `date`) VALUES
 (11, 'car insurance ', 200, 2, 4, 24160, 'muxtech.zm@gmail.com', 10, '2023-11-08 00:34:46');
 
 -- --------------------------------------------------------

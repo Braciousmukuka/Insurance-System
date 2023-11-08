@@ -11,29 +11,29 @@
 <?php
   if(isset($_POST['policy_sale'])){
 
-   $req_fields = array('client','product','intrest','premium','duration');
+   $req_fields = array('client','product','interest','premium','duration');
    validate_fields($req_fields);
 
    if(empty($errors)){
        $client   = remove_junk($db->escape($_POST['client']));
        $product   = remove_junk($db->escape($_POST['product']));
-       $intrest = (int)$db->escape($_POST['intrest']);
+       $interest = (int)$db->escape($_POST['interest']);
        $premium = (int)$db->escape($_POST['premium']);
        $time = (int)$db->escape($_POST['duration']);
 
 
-       //Intrest Calculations.()
-       $aintrest= $intrest/100;
-       $quaterSum = ($aintrest * $premium);
+       //Interest Calculations.()
+       $ainterest= $interest/100;
+       $quaterSum = ($ainterest * $premium);
        $yearamount = $premium*12;
        $totalPaid = $yearamount*$time;
        $totalSum = $quaterSum*4*$time+$totalPaid;
 
 
         $query = "INSERT INTO policy_sale (";
-        $query .="product,premium,intrest,sumassured,totalsum,client,insurancePeriod";
+        $query .="product,premium,interest,sumassured,totalsum,client,insurancePeriod";
         $query .=") VALUES (";
-        $query .=" '{$product}', '{$premium}', '{$intrest}','{$quaterSum}','{$totalSum}','{$client}','{$time}'";
+        $query .=" '{$product}', '{$premium}', '{$interest}','{$quaterSum}','{$totalSum}','{$client}','{$time}'";
         $query .=")";
 
         
@@ -82,7 +82,7 @@
                             <?php endforeach;?>
                             </select>
                             <br/>
-                            <select class="form-control" name="intrest">
+                            <select class="form-control" name="interest">
                             <?php foreach ($products as $product ):?>
                             <option value="<?php echo $product['sale_price'];?>"><?php echo ucwords($product['sale_price']);?> %</option>
                             <?php endforeach;?>

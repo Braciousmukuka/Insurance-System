@@ -86,7 +86,7 @@
      
             
           <h2 class="margin-top"> ZMW <?php  echo $quaterSum;?> </h2>
-          <h5 class="text-success">Payable Intrest (Quarterly) </h5>
+          <h5 class="text-success">Payable Interest (Quarterly) </h5>
         </div>
        </div>
     </div>

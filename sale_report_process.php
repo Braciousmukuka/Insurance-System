@@ -88,8 +88,8 @@ $results = '';
               <th>Date</th>
               <th>Product Title</th>
               <th>Premium Price</th>
-              <th>Intrest</th>
-              <th>Total Intrest</th>
+              <th>Interest</th>
+              <th>Total Interest</th>
               <th>TOTAL</th>
           </tr>
         </thead>

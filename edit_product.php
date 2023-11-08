@@ -121,7 +121,7 @@ if(!$product){
                  </div>
                   <div class="col-md-4">
                    <div class="form-group">
-                     <label for="qty">Intrest</label>
+                     <label for="qty">Interest</label>
                      <div class="input-group">
                   
                        <input type="number" class="form-control" name="saleing-price" value="<?php echo remove_junk($product['sale_price']);?>">

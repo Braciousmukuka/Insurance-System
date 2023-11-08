@@ -72,7 +72,7 @@
            <thead>
             <th> Item </th>
             <th> Premium </th>
-            <th> Intrest </th>
+            <th> Interest </th>
             <th> Sum Assured (Quarterly) </th>
             <th> Client</th>
             <th> Date</th>

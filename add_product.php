@@ -99,7 +99,7 @@
                  </div>
                   <div class="col-md-4">
                     <div class="input-group">
-                      <input type="number" class="form-control" name="saleing-price" placeholder="Intrest Added (Quaterly)">
+                      <input type="number" class="form-control" name="saleing-price" placeholder="Interest Added (Quaterly)">
                    </div>
                   </div>
                </div>

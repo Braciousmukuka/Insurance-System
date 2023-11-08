@@ -14,18 +14,18 @@ if(!$sale){
 <?php
 
   if(isset($_POST['update_sale'])){
-    $req_fields = array('product','client','intrest','sumA','TsumA', 'period');
+    $req_fields = array('product','client','interest','sumA','TsumA', 'period');
     validate_fields($req_fields);
         if(empty($errors)){
           $product      = $db->escape($_POST['product']);
           $client      = $db->escape($_POST['client']);
-          $intrest     = $db->escape((int)$_POST['intrest']);
+          $interest     = $db->escape((int)$_POST['interest']);
           $sumA   =  $db->escape((int)$_POST['sumA']);
           $sumT   =   $db->escape((int)$_POST['TsumA']);
           $period    = $db->escape((int)$_POST['period']);
 
           $sql  = "UPDATE policy_sale SET";
-          $sql .= " product='{$product}',client='{$client}',intrest='{$intrest}',sumassured='{$sumA}',totalsum='{$sumT}',insurancePeriod='{$period}'";
+          $sql .= " product='{$product}',client='{$client}',interest='{$interest}',sumassured='{$sumA}',totalsum='{$sumT}',insurancePeriod='{$period}'";
           $sql .= " WHERE id ='{$sale['id']}'";
           $result = $db->query($sql);
           if( $result && $db->affected_rows() === 1){
@@ -66,7 +66,7 @@ if(!$sale){
          <thead>
           <th> Product name</th>
           <th> Cient name </th>
-          <th> Verify Intrest </th>
+          <th> Verify Interest </th>
           <th> Sum Assured(Quarterly) </th>
           <th> Total Sum Assured</th>
           <th> Insurance Period</th>
@@ -82,8 +82,8 @@ if(!$sale){
                 <td id="s_client">
                   <input type="text" class="form-control" name="client" value="<?php echo remove_junk($sale['client']); ?>">
                 </td>
-                <td id="s_intrest">
-                  <input type="text" class="form-control" name="intrest" value="<?php echo (int)$sale['intrest']; ?>" >
+                <td id="s_interest">
+                  <input type="text" class="form-control" name="interest" value="<?php echo (int)$sale['interest']; ?>" >
                 </td>
                 <td id="s_sumAssured">
                   <input type="text" class="form-control" name="sumA" value="<?php echo (int)$sale['sumassured']; ?>" >

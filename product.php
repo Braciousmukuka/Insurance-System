@@ -26,7 +26,7 @@
                 <th class="text-center" style="width: 10%;"> Category</th>
                 <th class="text-center" style="width: 10%;"> Insuarnce Period (Years)  </th>
                 <th class="text-center" style="width: 10%;"> Monthly Premium (ZMW) </th>
-                <th class="text-center" style="width: 10%;"> Quaterly Intrest (%)</th>
+                <th class="text-center" style="width: 10%;"> Quaterly Interest (%)</th>
                 <th class="text-center" style="width: 10%;"> Product Added </th>
                 <th class="text-center" style="width: 100px;"> Actions </th>
               </tr>
