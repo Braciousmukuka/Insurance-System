@@ -21,6 +21,10 @@ SET time_zone = "+00:00";
 -- Database: `insurance_sys`
 --
 
+DROP DATABASE IF EXISTS `insurance_sys`;
+CREATE Database IF NOT EXISTS `insurance_sys`;
+USE `insurance_sys`;
+
 -- --------------------------------------------------------
 
 --
