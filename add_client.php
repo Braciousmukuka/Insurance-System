@@ -11,7 +11,7 @@
    $req_fields = array('full-name','username','password','level','reg','phone','address','bank');
    validate_fields($req_fields);
 
-   if(empty($errors)){
+    if(empty($errors)){
        $name   = remove_junk($db->escape($_POST['full-name']));
        $username   = remove_junk($db->escape($_POST['username']));
        $password   = remove_junk($db->escape($_POST['password']));
@@ -36,24 +36,35 @@
         $query2 .=" '{$username}', '{$reg}', '{$phone}', '{$address}','{$bank}'";
         $query2 .=")";
 
-        if($db->query($query)){
 
-          //Execute Second query
-          if($db->query($query2)){}
 
-          //sucess
-          $session->msg('s',"User account has been created! ");
-          redirect('users.php', false);
-        } else {
-          //failed
-          $session->msg('d',' Sorry failed to create account!');
-          redirect('add_client.php', false);
-        }
-   } else {
-     $session->msg("d", $errors);
+
+        // Check for duplicate entry before inserting
+        $checkDuplicate = $conn->query("SELECT COUNT(*) as count FROM clients WHERE name = '$username'");
+        $result = $checkDuplicate->fetch_assoc();
+
+        if ($result['count'] == 0) {
+          // No duplicate, proceed with the insertion
+          if($db->query($query)){
+
+            //Execute Second query
+            if($db->query($query2)){}
+  
+            //sucess
+            $session->msg('s',"User account has been created! ");
+            redirect('home.php', false); 
+          } 
+        }else {
+          // Duplicate entry} else {
+            $session->msg('d',' Duplicate entry. This value already exists.');
+            redirect('add_client.php',false);
+          }
+    }else {
+      $session->msg("d", $errors);
       redirect('add_client.php',false);
-   }
- }
+    }
+      
+} 
 ?>
 <?php include_once('layouts/header.php'); ?>
   <?php echo display_msg($msg); ?>

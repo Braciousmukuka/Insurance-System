@@ -7,11 +7,13 @@
   $groups = find_all('user_groups');
   $clients = find_all('clients');
   $products = find_all('products');
+  
 ?>
+
 <?php
   if(isset($_POST['policy_sale'])){
 
-   $req_fields = array('client','product','interest','premium','duration');
+   $req_fields = array('client','product','interest','premium','nrc','duration');
    validate_fields($req_fields);
 
    if(empty($errors)){
@@ -19,9 +21,11 @@
        $product   = remove_junk($db->escape($_POST['product']));
        $interest = (int)$db->escape($_POST['interest']);
        $premium = (int)$db->escape($_POST['premium']);
+       $nrc = remove_junk($db->escape($_POST['nrc']));
+       $payment = 1;
        $time = (int)$db->escape($_POST['duration']);
 
-
+       //Finding Nrc Number 
        //Interest Calculations.()
        $ainterest= $interest/100;
        $quaterSum = ($ainterest * $premium);
@@ -31,21 +35,27 @@
 
 
         $query = "INSERT INTO policy_sale (";
-        $query .="product,premium,interest,sumassured,totalsum,client,insurancePeriod";
+        $query .="product,premium,interest,sumassured,totalsum,client,nrc,payments,insurancePeriod";
         $query .=") VALUES (";
-        $query .=" '{$product}', '{$premium}', '{$interest}','{$quaterSum}','{$totalSum}','{$client}','{$time}'";
+        $query .=" '{$product}', '{$premium}', '{$interest}','{$quaterSum}','{$totalSum}','{$client}','{$nrc}','{$payment}','{$time}'";
         $query .=")";
 
-        
-        if($db->query($query)){
-          //sucess
-          $session->msg('s',"Policy Sold! ");
-          redirect('sales.php', false);
-        } else {
-          //failed
-          $session->msg('d',' Sorry failed to create account!');
-          redirect('policy_sale.php', false);
-        }
+          // Check for duplicate entry before inserting
+          $checkDuplicate = $conn->query("SELECT COUNT(*) as count FROM policy_sale WHERE product = '$product' && client = '$client' ");
+          $result = $checkDuplicate->fetch_assoc();
+  
+          if ($result['count'] == 0) {
+
+            if($db->query($query)){
+              //sucess
+              $session->msg('s',"Policy Sold! ");
+              redirect('sales.php', false);
+            } 
+          } else {
+              // Duplicate entry} else {
+                $session->msg('d',' Duplicate entry. Can not have the same Policy twice.');
+                redirect('policy_sale.php',false);
+          }
 
     } else {
       $session->msg("d", $errors);
@@ -67,12 +77,19 @@
                 <div class="col-md-6">
                     <form method="post" action="policy_sale.php">
                         <div class="form-group">
-                        <label for="level">Client Name</label>
-                            <select class="form-control" name="client">
-                            <?php foreach ($clients as $client):?>
-                            <option value="<?php echo $client['name'];?>"><?php echo ucwords($client['name']);?></option>
-                            <?php endforeach;?>
-                            </select>
+                          <label for="level">Client Name</label>
+                          <select class="form-control" name="client">
+                          <?php foreach ($clients as $client):?>
+                          <option value="<?php echo $client['name'];?>"><?php echo ucwords($client['name']);?></option>
+                          <?php endforeach;?>
+                          </select>
+                          <br/>
+                          <label for="nrc">Client N.R.C</label>
+                          <select  class="form-control" name="nrc">
+                          <?php foreach ($clients as $client):?>
+                          <option value="<?php echo $client['nrc'];?>"><?php echo ucwords($client['nrc']);?></option>
+                          <?php endforeach;?>
+                          </select>
                         </div>
                         <div class="form-group">
                         <label for="level">Policy</label>
@@ -90,7 +107,7 @@
                         </div>
                         <div class="form-group">
                             <label for="name">Monthly Premium</label>
-                            <input type="text" class="form-control" name="premium" placeholder="Enter Premium">
+                            <input type="number" class="form-control" name="premium" placeholder="Enter Premium">
                         </div>
                         <div>
                         <label for="level">Insurance Period (Years)</label>
@@ -100,7 +117,7 @@
                             <?php endforeach;?>
                             </select> -->
 
-                            <input type="number" min="1" class="form-control" name="duration" placeholder="10 years">
+                            <input type="number" min="1" class="form-control" name="duration" placeholder="Enter Number years">
 
                         </div>
                         <br/>

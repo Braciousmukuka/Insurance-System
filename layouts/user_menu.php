@@ -2,16 +2,16 @@
   <li>
     <a href="home.php">
       <i class="glyphicon glyphicon-home"></i>
-      <span>Dashboard</span>
+      <span>Home</span>
     </a>
   </li>
   <li>
     <a href="#" class="submenu-toggle">
       <i class="glyphicon glyphicon-th-list"></i>
-       <span>Sales</span>
+       <span>Policy Details</span>
       </a>
       <ul class="nav submenu">
-         <li><a href="#">Stats</a> </li>
+         <li><a href="clientDash.php">Stats</a> </li>
      </ul>
   </li>
 </ul>

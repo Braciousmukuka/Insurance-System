@@ -11,6 +11,14 @@ function find_all($table) {
      return find_by_sql("SELECT * FROM ".$db->escape($table));
    }
 }
+
+function find_nrc($table, $name) {
+  global $db;
+  if(tableExists($table))
+  {
+    return find_by_sql("SELECT * FROM ".$db->escape($table)."WHERE name =".$db->escape($name));
+  }
+}
 /*--------------------------------------------------------------*/
 /* Function for Perform queries
 /*--------------------------------------------------------------*/
@@ -147,6 +155,13 @@ function tableExists($table){
       $result = find_by_sql($sql);
       return $result;
   }
+
+  function find_payment($user){
+    global $db;
+    $sql = "SELECT payments FROM policy_sale WHERE client = '{$db->escape($user)}'";
+    $result = $db->query($sql);
+    return($db->num_rows($result) === 0 ? true : false);
+}
   /*--------------------------------------------------------------*/
   /* Function to update the last log in of a user
   /*--------------------------------------------------------------*/
