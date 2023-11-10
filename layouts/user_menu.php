@@ -11,7 +11,7 @@
        <span>Policy Details</span>
       </a>
       <ul class="nav submenu">
-         <li><a href="clientDash.php">Stats</a> </li>
+         <li><a href="clientDash.php">View Policy</a> </li>
      </ul>
   </li>
 </ul>
