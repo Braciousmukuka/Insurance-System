@@ -93,18 +93,20 @@ CREATE TABLE `policy_sale` (
   `premium` int(11) NOT NULL,
   `interest` int(11) NOT NULL,
   `sumassured` int(11) NOT NULL,
+  `nrc` varchar(255) NULL,
   `totalsum` int(11) NOT NULL,
   `client` varchar(255) NOT NULL,
   `insurancePeriod` int(11) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp()
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `payments` int(11)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `policy_sale`
 --
 
-INSERT INTO `policy_sale` (`id`, `product`, `premium`, `interest`, `sumassured`, `totalsum`, `client`, `insurancePeriod`, `date`) VALUES
-(11, 'car insurance ', 200, 2, 4, 24160, 'muxtech.zm@gmail.com', 10, '2023-11-08 00:34:46');
+INSERT INTO `policy_sale` (`id`, `product`, `premium`, `interest`, `sumassured`, `totalsum`, `client`, `insurancePeriod`, `payments`, `date`) VALUES
+(11, 'car insurance ', 200, 2, 4, 24160, 'muxtech.zm@gmail.com', 10, 1, '2023-11-08 00:34:46');
 
 -- --------------------------------------------------------
 
@@ -183,7 +185,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `user_level`, `image`, `status`, `last_login`) VALUES
-(1, 'Bracious Mukuka ', 'Admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1, 'no_image.png', 1, '2023-11-08 02:11:18'),
+(1, 'Mulenga Abeauty ', 'Admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1, 'no_image.png', 1, '2023-11-08 02:11:18'),
 (3, 'Christopher', 'user', '12dea96fec20593566ab75692c9949596833adc9', 3, 'no_image.png', 1, '2021-04-04 19:54:46'),
 (8, 'mubanga', 'mumu', '7c222fb2927d828af22f592134e8932480637c0d', 2, 'orchyrp48.png', 1, '2023-11-06 00:26:18'),
 (11, 'Mukuka', 'Mukuka', '7c222fb2927d828af22f592134e8932480637c0d', 2, 'no_image.jpg', 1, '2023-11-08 01:58:26'),

@@ -13,15 +13,23 @@
 <?php
   if(isset($_POST['policy_sale'])){
 
-   $req_fields = array('client','product','interest','premium','nrc','duration');
+   $req_fields = array('client','product','interest','premium','duration');
    validate_fields($req_fields);
 
    if(empty($errors)){
+
        $client   = remove_junk($db->escape($_POST['client']));
+      
+       $array = explode("__", $client);
+       $client = $array[0];
+       $nrc = $array[1];
+
+       //$client   = remove_junk($db->escape($_POST['client']));
+      //  $nrc = remove_junk($db->escape($_POST['nrc']));
+
        $product   = remove_junk($db->escape($_POST['product']));
        $interest = (int)$db->escape($_POST['interest']);
        $premium = (int)$db->escape($_POST['premium']);
-       $nrc = remove_junk($db->escape($_POST['nrc']));
        $payment = 1;
        $time = (int)$db->escape($_POST['duration']);
 
@@ -80,16 +88,17 @@
                           <label for="level">Client Name</label>
                           <select class="form-control" name="client">
                           <?php foreach ($clients as $client):?>
-                          <option value="<?php echo $client['name'];?>"><?php echo ucwords($client['name']);?></option>
+                          <option value="<?php echo $client['name'] . "__" .$client['nrc'];?>"><?php echo ucwords($client['name']) . " (" . $client['nrc'] . ")";?></option>
                           <?php endforeach;?>
                           </select>
                           <br/>
-                          <label for="nrc">Client N.R.C</label>
+                          <!-- <label for="nrc">Client N.R.C</label>
                           <select  class="form-control" name="nrc">
                           <?php foreach ($clients as $client):?>
                           <option value="<?php echo $client['nrc'];?>"><?php echo ucwords($client['nrc']);?></option>
                           <?php endforeach;?>
-                          </select>
+                          </select> -->
+                          <input type="hidden" name="nrc" value="000">
                         </div>
                         <div class="form-group">
                         <label for="level">Policy</label>
@@ -99,11 +108,13 @@
                             <?php endforeach;?>
                             </select>
                             <br/>
-                            <select class="form-control" name="interest">
+                            <!-- <select class="form-control" name="interest">
                             <?php foreach ($products as $product ):?>
                             <option value="<?php echo $product['sale_price'];?>"><?php echo ucwords($product['sale_price']);?> %</option>
                             <?php endforeach;?>
-                            </select>
+                            </select> -->
+                            <input type="number" min="1" class="form-control" name="interest" placeholder="Enter Interest (%)">
+
                         </div>
                         <div class="form-group">
                             <label for="name">Monthly Premium</label>
