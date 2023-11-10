@@ -1,4 +1,10 @@
 <ul>
+<li>
+    <a href="admin.php">
+      <i class="glyphicon glyphicon-home"></i>
+      <span>Home</span>
+    </a>
+  </li>
   <li>
     <a href="#" class="submenu-toggle">
       <i class="glyphicon glyphicon-user"></i>
@@ -7,12 +13,6 @@
     <ul class="nav submenu">
       <li><a href="add_client.php">Add Client </a> </li>
    </ul>
-  </li>
-  <li>
-    <a href="admin.php">
-      <i class="glyphicon glyphicon-home"></i>
-      <span>Dashboard</span>
-    </a>
   </li>
   <li>
     <a href="#" class="submenu-toggle">
@@ -32,6 +32,7 @@
       <ul class="nav submenu">
          <li><a href="sales.php">Review Sales</a> </li>
          <li><a href="policy_sale.php">Sale Policy</a> </li>
+         <li><a href="policy_pay.php">Process Payment</a> </li>
      </ul>
   </li>
   <li>

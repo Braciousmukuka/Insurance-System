@@ -39,6 +39,7 @@
       <ul class="nav submenu">
          <li><a href="sales.php">Review Sales</a> </li>
          <li><a href="policy_sale.php">Sale Policy</a> </li>
+         <li><a href="policy_pay.php">Process Payment</a> </li>
      </ul>
   </li>
   <li>
