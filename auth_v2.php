@@ -16,13 +16,13 @@ $password = remove_junk($_POST['password']);
            updateLastLogIn($user['id']);
            // redirect user to group home page by user level
            if($user['user_level'] === '1'):
-             $session->msg("s", "Hello ".$user['username'].", Welcome to OSWA-INV.");
+             $session->msg("s", "Hello ".$user['username'].", Welcome to The Online Insurance Agency Management System");
              redirect('admin.php',false);
            elseif ($user['user_level'] === '2'):
-              $session->msg("s", "Hello ".$user['username'].", Welcome to OSWA-INV.");
-             redirect('special.php',false);
+              $session->msg("s", "Hello ".$user['username'].", Welcome to The Online Insurance Agency Management System");
+             redirect('home.php',false);
            else:
-              $session->msg("s", "Hello ".$user['username'].", Welcome to OSWA-INV.");
+              $session->msg("s", "Hello ".$user['username'].", Welcome to The Online Insurance Agency Management System");
              redirect('home.php',false);
            endif;
 
