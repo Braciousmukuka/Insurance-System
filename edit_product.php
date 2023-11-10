@@ -105,7 +105,7 @@ if(!$product){
                     <label for="qty">Years</label>
                     <div class="input-group">
                     
-                      <input type="number" class="form-control" name="product-quantity" value="<?php echo remove_junk($product['quantity']); ?>">
+                      <input type="number" min="1" class="form-control" name="product-quantity" value="<?php echo remove_junk($product['quantity']); ?>">
                    </div>
                   </div>
                  </div>
@@ -114,7 +114,7 @@ if(!$product){
                     <label for="qty">Premium price</label>
                     <div class="input-group">
                       
-                      <input type="number" class="form-control" name="buying-price" value="<?php echo remove_junk($product['buy_price']);?>">
+                      <input type="number" min="1" class="form-control" name="buying-price" value="<?php echo remove_junk($product['buy_price']);?>">
                      
                    </div>
                   </div>
@@ -124,7 +124,7 @@ if(!$product){
                      <label for="qty">Interest</label>
                      <div class="input-group">
                   
-                       <input type="number" class="form-control" name="saleing-price" value="<?php echo remove_junk($product['sale_price']);?>">
+                       <input type="number" min="1" class="form-control" name="saleing-price" value="<?php echo remove_junk($product['sale_price']);?>">
                        
                     </div>
                    </div>
