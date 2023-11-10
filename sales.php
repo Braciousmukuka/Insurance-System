@@ -33,6 +33,7 @@ $psales = find_all_Psale() ;
                 <th class="text-center" style="width: 50px;">#</th>
                 <th> Product name </th>
                 <th> Client name </th>
+                <th> Client N.R.C </th>
                 <th class="text-center" style="width: 15%;"> Interest</th>
                 <th class="text-center" style="width: 15%;"> Sum Assured (Quarterly) </th>
                 <th class="text-center" style="width: 15%;"> Total Sum Assured </th>
@@ -47,6 +48,7 @@ $psales = find_all_Psale() ;
                <td class="text-center"><?php echo count_id();?></td>
                <td><?php echo remove_junk($sale['product']); ?></td>
                <td><?php echo remove_junk($sale['client']); ?></td>
+               <td><?php echo remove_junk($sale['nrc']); ?></td>
                <td class="text-center"><?php echo (int)$sale['interest']." %"; ?></td>
                <td class="text-center"><?php echo remove_junk("ZMW ".  $sale['sumassured']); ?></td>
                <td class="text-center"><?php echo remove_junk("ZMW ".  $sale['totalsum']); ?></td>

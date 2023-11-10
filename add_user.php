@@ -22,20 +22,31 @@
         $query .=") VALUES (";
         $query .=" '{$name}', '{$username}', '{$password}', '{$user_level}','1'";
         $query .=")";
-        if($db->query($query)){
-          //sucess
-          $session->msg('s',"User account has been created! ");
-          redirect('add_user.php', false);
+
+
+        
+        // Check for duplicate entry before inserting
+        $checkDuplicate = $conn->query("SELECT COUNT(*) as count FROM users WHERE username = '$username'");
+        $result = $checkDuplicate->fetch_assoc();
+
+        if ($result['count'] == 0) {
+          // No duplicate, proceed with the insertion
+          if($db->query($query)){
+            //sucess
+            $session->msg('s',"User account has been created! ");
+            redirect('add_user.php', false);
+          }
+            
         } else {
-          //failed
-          $session->msg('d',' Sorry failed to create account!');
-          redirect('add_user.php', false);
-        }
-   } else {
-     $session->msg("d", $errors);
-      redirect('add_user.php',false);
-   }
- }
+            // Duplicate entry} else {
+              $session->msg('d',' Duplicate entry. This value already exists.');
+              redirect('add_user.php',false);
+        }  
+  }else{
+    $session->msg("d", $errors);
+    redirect('add_user.php',false);
+  }
+}
 ?>
 <?php include_once('layouts/header.php'); ?>
   <?php echo display_msg($msg); ?>

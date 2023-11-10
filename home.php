@@ -11,8 +11,8 @@
  <div class="col-md-12">
     <div class="panel">
       <div class="jumbotron text-center">
-         <h1>Welcome To <hr> Online Insurance Agency Management System</h1>
-         <p>Browes around to find out the pages that you can access!</p>
+         <h1> <hr> Online Insurance Agency Management System</h1>
+         <p>Optimised Insurance Management!</p>
       </div>
     </div>
  </div>
