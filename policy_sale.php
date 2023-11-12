@@ -35,11 +35,11 @@
 
        //Finding Nrc Number 
        //Interest Calculations.()
-       $ainterest= $interest/100;
-       $quaterSum = ($ainterest * $premium);
+       $A_intrest = $interest/100;
+       $quaterSum = $A_intrest * $premium;
        $yearamount = $premium*12;
        $totalPaid = $yearamount*$time;
-       $totalSum = $quaterSum*4*$time+$totalPaid;
+       $totalSum = $quaterSum * 4 * $time + $totalPaid;
 
 
         $query = "INSERT INTO policy_sale (";
@@ -107,12 +107,7 @@
                             <option value="<?php echo $product['name'];?>"><?php echo ucwords($product['name']);?></option>
                             <?php endforeach;?>
                             </select>
-                            <br/>
-                            <!-- <select class="form-control" name="interest">
-                            <?php foreach ($products as $product ):?>
-                            <option value="<?php echo $product['sale_price'];?>"><?php echo ucwords($product['sale_price']);?> %</option>
-                            <?php endforeach;?>
-                            </select> -->
+                            <br/>                        
                             <input type="number" min="1" class="form-control" name="interest" placeholder="Enter Interest (%)">
 
                         </div>
@@ -122,12 +117,6 @@
                         </div>
                         <div>
                         <label for="level">Insurance Period (Years)</label>
-                            <!-- <select class="form-control" name="duration">
-                            <?php foreach ($products as $product ):?>
-                            <option value="<?php echo $product['quantity'];?>"><?php echo ucwords($product['quantity']);?> Years</option>
-                            <?php endforeach;?>
-                            </select> -->
-
                             <input type="number" min="1" class="form-control" name="duration" placeholder="Enter Number years">
 
                         </div>

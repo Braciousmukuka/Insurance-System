@@ -34,7 +34,8 @@ $psales = find_all_Psale() ;
                 <th> Product name </th>
                 <th> Client name </th>
                 <th> Client N.R.C </th>
-                <th class="text-center" style="width: 15%;"> Monthly Premium</th>
+                <th class="text-center" style="width: 15%;">Monthly Premium</th>
+                <th class="text-center" style="width: 15%;">Premiums Paid</th>
                 <th class="text-center" style="width: 15%;"> Interest</th>
                 <th class="text-center" style="width: 15%;"> Sum Assured (Quarterly) </th>
                 <th class="text-center" style="width: 15%;"> Total Sum Assured </th>
@@ -51,6 +52,7 @@ $psales = find_all_Psale() ;
                <td><?php echo remove_junk($sale['client']); ?></td>
                <td><?php echo remove_junk($sale['nrc']); ?></td>
                <td class="text-center"><?php echo remove_junk("ZMW ".  $sale['premium']) ?></td>
+               <td class="text-center"><?php echo remove_junk($sale['payments']) ?></td>
                <td class="text-center"><?php echo (int)$sale['interest']." %"; ?></td>
                <td class="text-center"><?php echo remove_junk("ZMW ".  $sale['sumassured']); ?></td>
                <td class="text-center"><?php echo remove_junk("ZMW ".  $sale['totalsum']); ?></td>
