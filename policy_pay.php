@@ -4,28 +4,23 @@
   // Checkin What level user has permission to view this page
   page_require_level(2);
  
-  $groups = find_all('user_groups');
   $clients = find_all('policy_sale');
-  $products = find_all('products');
-  
-  
 ?>
 
 <?php
   if(isset($_POST['policy_pay'])){
 
-   $req_fields = array('client');
+   $req_fields = array('client','payments');
    validate_fields($req_fields);
 
    if(empty($errors)){
        $client   = remove_junk($db->escape($_POST['client']));
-       $pay = find_payment($client);
-       $pay_update = $pay+1;
+       $payments = (int)$db->escape($_POST['payments']);
 
 
-        $query = "INSERT INTO policy_sale (client, payments)
-        VALUES ('{$client}', '{$pay_update}')
-        ON DUPLICATE KEY UPDATE payments = '{$pay_update}'";
+       $query = "UPDATE policy_sale 
+          SET payments = '{$payments}' 
+          WHERE client = '{$client}'";
 
             if($db->query($query)){
               //sucess
@@ -36,8 +31,6 @@
                   $session->msg('d',' Duplicate entry. Can not have the same Policy twice.');
                   redirect('policy_pay.php',false);
             }
-          
-
     } else {
       $session->msg("d", $errors);
         redirect('policy_pay.php',false);
@@ -65,6 +58,8 @@
                           <?php endforeach;?>
                           </select>
                           <br/>
+                          <label for="payments">Payments Made </label>                        
+                          <input type="number" min="1" class="form-control" name="payments" placeholder="Enter Number of Payments ">
                         </div>
                         <br/>
                         <div class="form-group clearfix">
